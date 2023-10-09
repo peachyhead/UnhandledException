@@ -3,6 +3,7 @@
 // All Rights Reserved
 // [2020]-[2023].
 
+using Features.Level.Data;
 using Features.Room.Data;
 using Features.Room.Data.Config;
 using Features.Room.Storages;
@@ -28,13 +29,13 @@ namespace Features.Room.Services
             var place = FindSpace(bounds);
             var data = _roomViewRegistry.GetDataByID(roomID);
             var room = _roomModelStorage.GetNewRoom(data, place);
-            room.SetPosition(place * 20);
+            room.SetPosition(place * GenerationConsts.GridSize);
         }
 
         private Vector3Int FindSpace(Vector3Int bounds)
         {
             var available = bounds.GetAvailable(_roomModelStorage.GetPlaces());
-            return available.GetRandomElement();
+            return available.GetRandom();
         }
     }
 }
