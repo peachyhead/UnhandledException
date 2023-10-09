@@ -1,3 +1,3 @@
 # UnhandledException
 
-## This is temporary repo for a big project
+## This is a temporary repo for a big project
