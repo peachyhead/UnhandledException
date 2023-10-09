@@ -3,12 +3,15 @@
 // All Rights Reserved
 // [2020]-[2023].
 
+using Cysharp.Threading.Tasks;
 using Features.Level.Signals;
+using Features.Stages.Interfaces;
+using UnityEngine;
 using Zenject;
 
 namespace Features.Stages.Models
 {
-    public class GenerationStage : IInitializable
+    public class GenerationStage : IStage
     {
         private readonly SignalBus _signalBus;
 
@@ -17,9 +20,14 @@ namespace Features.Stages.Models
             _signalBus = signalBus;
         }
 
-        public void Initialize()
+        public void SetContext(params IStage[] stages)
+        { }
+
+        public UniTask Execute()
         {
+            Debug.Log($"{GetType().Name} is Executing!");
             _signalBus.TryFire(new LevelSignals.GenerateLevel("past"));
+            return UniTask.CompletedTask;
         }
     }
 }

@@ -7,7 +7,7 @@ using Zenject;
 namespace Bootstrap
 {
     [CreateAssetMenu(fileName = "ConfigInstaller", menuName = "Installer/ConfigInstaller")]
-    public class ConfigInstaller : ScriptableObjectInstaller
+    public class ConfigInstaller : ScriptableObjectInstaller<ConfigInstaller>
     {
         [SerializeField] private List<BaseConfig> _configs;
 
